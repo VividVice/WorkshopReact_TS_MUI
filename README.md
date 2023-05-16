@@ -12,7 +12,7 @@ Eliyan Dochev</a>!</h1>
         <a style="margin-left: 10px;" target="_blank" href="https://github.com/ElianDochev">
 		<img src="https://img.icons8.com/doodle/40/000000/github--v1.png"></a>
 		<a style="margin-left: 5px;" target="_blank" href="mailto:eliyan.dochev@epitech.eu">
-					<img style="width: 40px; height: 40px" src="https://icons8.com/icon/1fmYJMlAzKXa/microsoft-outlook" ></a>
+					<img style="width: 40px; height: 40px" src="https://image.similarpng.com/very-thumbnail/2021/09/Outlook-icon-on-transparent-background-PNG.png" ></a>
       </div>
 </p>
 
