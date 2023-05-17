@@ -55,6 +55,11 @@ after that go to the root of the project and run the following command
 
 ```bash
 npm install
+```
+
+to start the project run
+
+```bash
 npm start
 ```
 
