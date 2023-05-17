@@ -10,6 +10,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    {/* something is missing here */}
     <CssBaseline />
     <App />
   </React.StrictMode>

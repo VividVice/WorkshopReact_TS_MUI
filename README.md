@@ -31,7 +31,7 @@ For the needs of the workshop, you'll need to fork the GitHub repository on your
 This will help us to mark you as present.
 Please, fork it as a public repository, or we could not access to it, and you'll be marked as absent.
 
-Note : https://docs.github.com/en/get-started/quickstart/fork-a-repo
+**Documentaion https://docs.github.com/en/get-started/quickstart/fork-a-repo**
 
 Then, clone the repository on your local machine.
 
@@ -55,6 +55,56 @@ after that go to the root of the project and run the following command
 
 ```bash
 npm install
+npm start
 ```
 
 ### Step 1 - Theme setup
+
+Using the theme provided in src/theme.tsx, create a theme
+provider for your app in **src/index.tsx** <br>
+
+Hint: Wrap the App component <br>
+
+**Documentation [MUI theaming](https://material-ui.com/customization/theming/)**
+
+### Step 2 - Create states
+
+using the useState hook, create a state for the following variables in **src/App.tsx**
+
+- prevValue
+- currentValue (default value 0)
+- operator
+- overwrite
+
+**Documentation [useState](https://reactjs.org/docs/hooks-state.html) , [State lifecycle](https://legacy.reactjs.org/docs/state-and-lifecycle.html)**
+
+### Step 3 - Create your first interface
+
+In **src/DigitButton.tsx** create an interface for the props of the component and use it
+
+**Documentation [Interfaces](https://www.typescriptlang.org/docs/handbook/2/objects.html#interfaces) , [Props and Interfaces](https://www.pluralsight.com/guides/use-interface-props-in-functional-components-using-typescript-with-react)**
+
+### Step 4 - Configure your first MUI component
+
+In **src/OperationButton.tsx** configure the Button component from MUI to fullwidth, variant outlined and set the onClick to selectOperation fuction
+
+**Documentation [Button](https://material-ui.com/components/buttons/)**
+
+### Step 5 - Finish the calculator
+
+In **src/App.tsx** finish the calculator by implementing UI and logic
+Remeber use grid MUI component for the layout
+example:
+
+```jsx
+<Container maxWidth="sm">
+  <CalculatorBase elevation={3}>
+    <Grid container spacing={1}>
+      <Grid item xs={12}>
+        <OutputContainer data-testid="output">{currentValue}</OutputContainer>
+        {/* ... */}
+  </CalculatorBase>
+</Container>
+```
+
+**Documentation [Grid](https://material-ui.com/components/grid/)**
