@@ -10,8 +10,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    {/* something is missing here */}
+    <ThemeProvider theme={theme}>
     <CssBaseline />
     <App />
+    </ThemeProvider>
   </React.StrictMode>
 );

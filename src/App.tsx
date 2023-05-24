@@ -19,91 +19,185 @@ const CalculatorBase = styled(Paper)(({ theme }) => ({
 }));
 
 function App() {
-  /* !!!TODO
-  Create a state for currentValue, prevValue, operation and overwrite
-  */
+  const [currentValue, setCurrentValue] = useState("0");
+  const [prevValue, setPrevValue] = useState("");
+  const [operation, setOperation] = useState("");
+  const [overwrite, setOverwrite] = useState(false);
 
-  // const equals = () => {
-  //   const val = calculate();
-  //   setCurrentValue(`${val}`);
-  //   setPrevValue("");
-  //   setOperation("");
-  //   setOverwrite(true);
-  // };
+  const equals = () => {
+    const val = calculate();
+    setCurrentValue(`${val}`);
+    setPrevValue("");
+    setOperation("");
+    setOverwrite(true);
+  };
 
-  // const calculate = () => {
-  //   if (!prevValue || !operation) return currentValue;
+  const calculate = () => {
+    if (!prevValue || !operation) return currentValue;
 
-  //   const curr = parseFloat(currentValue);
-  //   const prev = parseFloat(prevValue);
+    const curr = parseFloat(currentValue);
+    const prev = parseFloat(prevValue);
 
-  //   let result;
-  //   switch (operation) {
-  //     case "÷":
-  //       result = prev / curr;
-  //       break;
-  //     case "*":
-  //       result = prev * curr;
-  //       break;
-  //     case "-":
-  //       result = prev - curr;
-  //       break;
-  //     case "+":
-  //       result = prev + curr;
-  //       break;
-  //   }
-  //   return result;
-  // };
+    let result;
+    switch (operation) {
+      case "÷":
+        result = prev / curr;
+        break;
+      case "*":
+        result = prev * curr;
+        break;
+      case "-":
+        result = prev - curr;
+        break;
+      case "+":
+        result = prev + curr;
+        break;
+    }
+    return result;
+  };
 
-  // const clear = () => {
-  //   setPrevValue("");
-  //   setOperation("");
-  //   setCurrentValue("0");
-  //   setOverwrite(true);
-  // };
+  const clear = () => {
+    setPrevValue("");
+    setOperation("");
+    setCurrentValue("0");
+    setOverwrite(true);
+  };
 
-  // const del = () => {
-  //   setCurrentValue("0");
-  //   setOverwrite(true);
-  // };
+  const del = () => {
+    setCurrentValue("0");
+    setOverwrite(true);
+  };
 
-  // const percent = () => {
-  //   const curr = parseFloat(currentValue);
-  //   setCurrentValue((curr / 100).toString());
-  // };
+  const percent = () => {
+    const curr = parseFloat(currentValue);
+    setCurrentValue((curr / 100).toString());
+  };
 
-  // const selectOperation = (x: string) => {
-  //   if (prevValue) {
-  //     const val = calculate();
-  //     setCurrentValue(`${val}`);
-  //     setPrevValue(`${val}`);
-  //   } else {
-  //     setPrevValue(currentValue);
-  //   }
-  //   setOperation(x);
-  //   setOverwrite(true);
-  // };
+  const selectOperation = (x: string) => {
+    if (prevValue) {
+      const val = calculate();
+      setCurrentValue(`${val}`);
+      setPrevValue(`${val}`);
+    } else {
+      setPrevValue(currentValue);
+    }
+    setOperation(x);
+    setOverwrite(true);
+  };
 
-  // const setDigit = (digit: string) => {
-  //   if (currentValue[0] === "0" && digit === "0") return;
-  //   if (currentValue.includes(".") && digit === ".") return;
+  const setDigit = (digit: string) => {
+    if (currentValue[0] === "0" && digit === "0") return;
+    if (currentValue.includes(".") && digit === ".") return;
 
-  //   if (overwrite && digit !== ".") {
-  //     setCurrentValue(digit);
-  //   } else {
-  //     setCurrentValue(`${currentValue}${digit}`);
-  //   }
-  //   setOverwrite(false);
-  // };
+    if (overwrite && digit !== ".") {
+      setCurrentValue(digit);
+    } else {
+      setCurrentValue(`${currentValue}${digit}`);
+    }
+    setOverwrite(false);
+  };
 
   return (
     <Container maxWidth="sm">
-      {/* !!!TODO
-      Fill this with the calculator UI, use the components from the DigitButton and OperationButton
-      use CalculatorBase as the base component for the calculator and OutputContainer for the output display(should be at the top)
-      Use Grid Component for the layout
-      FIY: = should be its separate button
-      */}
+      <OutputContainer>{currentValue}</OutputContainer>
+      <CalculatorBase>
+        <Grid container spacing={2}>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={7} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={8} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={9} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <OperationButton
+              selectedOperation={operation}
+              operation="÷"
+              selectOperation={selectOperation}
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={4} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={5} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={6} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <OperationButton
+              selectedOperation={operation}
+              operation="*"
+              selectOperation={selectOperation}
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={1} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={2} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={3} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <OperationButton
+              selectedOperation={operation}
+              operation="-"
+              selectOperation={selectOperation}
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={clear}
+            >
+              C
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <DigitButton xs={3} digit={0} enterDigit={setDigit} />
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={del}
+            >
+              Del
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <OperationButton
+              selectedOperation={operation}
+              operation="+"
+              selectOperation={selectOperation}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={percent}
+            >
+              %
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={equals}
+            >
+              =
+            </Button>
+          </Grid>
+        </Grid>
+      </CalculatorBase>
     </Container>
   )
 }
